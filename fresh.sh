@@ -30,5 +30,6 @@ brew update
 brew tap homebrew/bundle
 brew bundle --file ./Brewfile
 
-# install powerlevel10
-echo "Installing powelevel10"
+# link the wezterm config file with th one in the dotfiles
+rm $HOME/.config/wezterm/wezterm.lua 
+ln -sw $HOME/.dotfiles/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua

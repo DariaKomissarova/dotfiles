@@ -1,5 +1,6 @@
 # Path to your dotfiles.
 export DOTFILES=$HOME/.dotfiles
+export WEZTERM_CONFIG_FILE=$HOME/.dotfiles/wezterm/wezterm.lua
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -59,11 +60,13 @@ ZSH_THEME="kennethreitz"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd.mm.yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=$DOTFILES
 
+# print a red ellipsis to indicate that Zsh is still processing a completion request
+COMPLETION_WAITING_DOTS=true
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
