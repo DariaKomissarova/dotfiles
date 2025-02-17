@@ -13,9 +13,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
  
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
 export NVM_DIR="$HOME/.nvm"
     # This loads nvm
     [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
@@ -82,8 +79,13 @@ COMPLETION_WAITING_DOTS=true
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 plugins=(git direnv pyenv example zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 source $ZSH/oh-my-zsh.sh
+source $DOTFILES/direnv/direnvrc
 
 # User configuration
 
@@ -115,6 +117,4 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh".
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+

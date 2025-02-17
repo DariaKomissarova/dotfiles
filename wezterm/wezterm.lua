@@ -17,7 +17,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.native_macos_fullscreen_mode = false
 config.use_fancy_tab_bar = false
 config.scrollback_lines = 3500
-config.disable_default_key_bindings = true
+-- config.disable_default_key_bindings = true
 config.keys = {
 -- Search
     {
@@ -37,8 +37,8 @@ config.keys = {
     },
 
     -- Copy & Paste
-    { key = "c", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
-    { key = "v", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "c", mods = "CTRL|CMD", action = wezterm.action.CopyTo("Clipboard") },
+    { key = "v", mods = "CTRL|CMD", action = wezterm.action.PasteFrom("Clipboard") },
 
     -- Font size
     { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },

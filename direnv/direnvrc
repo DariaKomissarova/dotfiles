@@ -58,3 +58,7 @@ layout_poetry() {
   export POETRY_ACTIVE=1 # or VENV_ACTIVE=1
   export VIRTUAL_ENV
 }
+
+use_layout_uv(){
+ layout_uv
+}
