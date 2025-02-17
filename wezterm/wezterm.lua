@@ -31,14 +31,14 @@ config.keys = {
       action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
     },
     {
-      key = "F",
+      key = "f",
       mods = "CTRL|SHIFT",
       action = wezterm.action.Search({ CaseSensitiveString = "" }),
     },
 
     -- Copy & Paste
-    { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
-    { key = "V", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
+    { key = "c", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
+    { key = "v", mods = "CTRL", action = wezterm.action.PasteFrom("Clipboard") },
 
     -- Font size
     { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
@@ -46,14 +46,17 @@ config.keys = {
     { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
 
     -- The debug overlay
-    { key = "L", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
-
-    -- Exiting
+    { key = "l", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
+    { key = 't',
+      mods = 'CMD',
+      action = wezterm.action.SpawnTab 'CurrentPaneDomain'
+    },
+   -- Exiting
     {
       key = "w",
       mods = "SUPER",
       action = wezterm.action.CloseCurrentTab({ confirm = true }),
     },
-    { key = "q", mods = modifier, action = wezterm.action.QuitApplication } ,
+   -- { key = "q", mods = modifier, action = wezterm.action.QuitApplication } ,
 }
 return config
