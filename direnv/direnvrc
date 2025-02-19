@@ -1,64 +1,56 @@
-# shellcheck shell=bash
-
-layout_uv() {
-  if [ -f ".python-version" ]; then
-    python_version=$(cat .python-version)
-  else
-    python_version=$(python --version 2>&1 | cut -d' ' -f2)
-  fi
-
-  VIRTUAL_ENV="$(pwd)/.venv/$python_version"
-
-  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
-    log_status 'No virtual environment exists. Executing "uv venv" to create one.'
-    uv venv "$VIRTUAL_ENV" --python "$python_version"
-  fi
-
-  PATH_add "$VIRTUAL_ENV/bin"
-  export UV_ACTIVE=1
-  export VIRTUAL_ENV
-  export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
-}
-
-layout_poetry() {
-  if ! has poetry; then
-    log_error "Poetry is not installed"
-    return 1
-  fi
-
-  PYPROJECT_TOML="${PYPROJECT_TOML:-pyproject.toml}"
-  if [[ ! -f $PYPROJECT_TOML ]]; then
-    log_status "No pyproject.toml found. Executing \`poetry init\` to create a \`$PYPROJECT_TOML\` first."
-    poetry init
-  fi
-
-  if [[ -d ".venv" ]]; then
-    VIRTUAL_ENV="$(pwd)/.venv"
-  else
-    VIRTUAL_ENV=$(
-      poetry env info --path 2>/dev/null
-      true
-    )
-  fi
-
-  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
-    log_status "No virtual environment exists. Executing 'poetry install' to create one."
-
-    if [ -f ".python-version" ]; then
-      python_version=$(cat .python-version)
-      log_status "Found .python-version file using python $python_version"
-      poetry env use "$python_version"
+use_pyenv() {
+  unset PYENV_VERSION
+  # Because each python version is prepended to the PATH, add them in reverse order
+  for ((j = $#; j >= 1; j--)); do
+    local python_version=${!j}
+    local pyenv_python=$(pyenv root)/versions/${python_version}/bin/python
+    if [[ ! -x "$pyenv_python" ]]; then
+      log_error "Error: $pyenv_python can't be executed."
+      return 1
     fi
 
-    poetry install
-    VIRTUAL_ENV=$(poetry env info --path)
+    unset PYTHONHOME
+    local ve=$($pyenv_python -c "import pkgutil; print('venv' if pkgutil.find_loader('venv') else ('virtualenv' if pkgutil.find_loader('virtualenv') else ''))")
+
+    case $ve in
+      "venv")
+        VIRTUAL_ENV=$(direnv_layout_dir)/python-$python_version
+        export VIRTUAL_ENV
+        if [[ ! -d $VIRTUAL_ENV ]]; then
+          $pyenv_python -m venv "$VIRTUAL_ENV"
+        fi
+        PATH_add "$VIRTUAL_ENV"/bin
+        ;;
+      "virtualenv")
+        layout_python "$pyenv_python"
+        ;;
+      *)
+        log_error "Error: neither venv nor virtualenv are available to ${pyenv_python}."
+        return 1
+        ;;
+    esac
+
+ [[ -z "${PYENV_VERSION-}" ]] && PYENV_VERSION=$python_version || PYENV_VERSION="${python_version}:$PYENV_VERSION"
+  done
+
+  export PYENV_VERSION
+}
+use_pyenv_from_dot_python_version() {
+  if [[ ! -f .python-version ]]; then
+    log_error 'No .python-version found'
+    exit 2
   fi
 
-  PATH_add "$VIRTUAL_ENV/bin"
-  export POETRY_ACTIVE=1 # or VENV_ACTIVE=1
-  export VIRTUAL_ENV
+  local version=$(cat .python-version)
+  use_pyenv "$version"
 }
 
-use_layout_uv(){
- layout_uv
+use_pyenv_from_runtime_txt() {
+  if [[ ! -f runtime.txt ]]; then
+    log_error 'No runtime.txt found'
+    exit 2
+  fi
+
+  local version=$(cat runtime.txt | sed 's/python-//')
+  use_pyenv "$version"
 }
