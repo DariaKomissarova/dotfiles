@@ -20,6 +20,7 @@ export NVM_DIR="$HOME/.nvm"
     [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
 export LIBRARY_PATH="/opt/homebrew/lib"
+source aliasrc
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -86,7 +87,6 @@ eval "$(pyenv init -)"
 plugins=(git direnv pyenv example zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES/direnv/direnvrc
-echo  $DOTFILES/direnv/direnvrc
 
 # User configuration
 
