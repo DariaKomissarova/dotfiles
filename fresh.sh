@@ -38,3 +38,6 @@ brew bundle --file ./Brewfile
 # link the wezterm config file with th one in the dotfiles
 rm $HOME/.config/wezterm/wezterm.lua
 ln -sw $HOME/.dotfiles/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+
+# setting global gitignore
+git config --global core.excludesfile ~/.dotfiles/.gitignore
