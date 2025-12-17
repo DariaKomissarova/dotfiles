@@ -37,7 +37,9 @@ use_pyenv() {
 }
 use_pyenv_from_dot_python_version() {
   if [[ ! -f .python-version ]]; then
-    log_error 'No .python-version found'
+    use_pyenv "3.13.5"
+    log_error 'Usong default 3.13.5 version'
+    # log_error 'No .python-version found'
     exit 2
   fi
 

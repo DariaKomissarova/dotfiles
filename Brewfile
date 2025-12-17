@@ -23,6 +23,7 @@ brew 'python'
 brew 'shellcheck'
 brew 'postgresql@16'
 brew 'pipx'
+brew 'lazygit'
 
 # Apps
 cask 'docker'

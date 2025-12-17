@@ -27,12 +27,12 @@ config.keys = {
     },
     {
       key = "k",
-      mods = "CTRL",
+      mods = "CMD",
       action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
     },
     {
       key = "f",
-      mods = "CTRL|SHIFT",
+      mods = "CTRL|SHIFT|CMD",
       action = wezterm.action.Search({ CaseSensitiveString = "" }),
     },
 
@@ -41,9 +41,9 @@ config.keys = {
     { key = "v", mods = "CTRL|CMD", action = wezterm.action.PasteFrom("Clipboard") },
 
     -- Font size
-    { key = "=", mods = "CTRL", action = wezterm.action.IncreaseFontSize },
-    { key = "-", mods = "CTRL", action = wezterm.action.DecreaseFontSize },
-    { key = "0", mods = "CTRL", action = wezterm.action.ResetFontSize },
+    { key = "=", mods = "CTRL|CMD", action = wezterm.action.IncreaseFontSize },
+    { key = "-", mods = "CTRL|CMD", action = wezterm.action.DecreaseFontSize },
+    { key = "0", mods = "CTRL|CMD", action = wezterm.action.ResetFontSize },
 
     -- The debug overlay
     { key = "l", mods = "CTRL", action = wezterm.action.ShowDebugOverlay },
