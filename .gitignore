@@ -20,4 +20,3 @@ docker-compose.yml
 .vscode/
 
 *.lock
-*.toml
