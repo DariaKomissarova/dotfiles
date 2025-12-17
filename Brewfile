@@ -13,8 +13,17 @@ brew 'mas' # Mac App Store manager
 brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
 brew 'svn' # Needed to install fonts
 
-# Development
-# brew 'imagemagick'
+# Development Tools
+brew 'neovim'
+brew 'universal-ctags'    # Fixes: Gutentags ctags job failed
+brew 'node@22'            # Fixes: Copilot Node.js too old
+brew 'python'
+brew 'poetry'             # For your document-creation project
+brew 'ruff'               # For your auto-format on save
+brew 'fzf'                # For fzf-lua
+brew 'ripgrep'            # For fzf-lua grep
+brew 'fd'                 # For fzf-lua file finding
+brew 'viu'                # For fzf-lua image previews
 brew 'yarn'
 brew 'direnv'
 brew 'pyenv'
@@ -37,6 +46,7 @@ cask 'zoom'
 cask '1password'
 
 # Fonts
+cask 'font-source-code-pro'
 cask 'font-lato'
 cask 'font-open-sans'
 cask 'font-roboto'
