@@ -28,8 +28,8 @@ ln -sfn $HOME/.dotfiles/.zshrc $HOME/.zshrc
 mkdir -p $HOME/.config/wezterm
 ln -sfn $HOME/.dotfiles/wezterm/wezterm.lua $HOME/.wezterm.lua
 # Git Global Ignore
-ln -sfn $HOME/.dotfiles/.gitignore_global $HOME/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
+ln -sfn $HOME/.dotfiles/.gitignore_global $HOME/.gitignore
+git config --global core.excludesfile $HOME/.gitignore
 
 # 5. Neovim Setup
 echo "Linking Neovim..."

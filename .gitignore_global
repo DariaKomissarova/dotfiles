@@ -1,0 +1,94 @@
+# --- OS / System Files ---
+.DS_Store
+.AppleDouble
+.LSOverride
+.Trash/
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# --- IDEs & Editors (Keep these Global) ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+*.iml
+*.sublime-project
+*.sublime-workspace
+.ipynb_checkpoints
+.spyderproject
+.ropeproject
+
+# --- Python Environment / Tooling ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+.env
+.env.*
+.envrc
+.direnv/
+.python-version
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+.pdm-python
+.pixi/
+__pypackages__/
+
+# --- Node / JS ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# --- Build & Distribution ---
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Testing & Coverage ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+cover/
+
+# --- Logs & Databases ---
+*.log
+*.sqlite3-journal
+dump.rdb
+celerybeat-schedule
+celerybeat.pid
+
+# --- Temporary / Misc ---
+*.tmp
+*.orig
+*.rej
+.cache/
+
+
+media/
