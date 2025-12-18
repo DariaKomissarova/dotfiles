@@ -34,6 +34,18 @@ brew 'postgresql@16'
 brew 'pipx'
 brew 'lazygit'
 
+# API & Data
+brew 'jq'                # Essential for processing JSON in the terminal
+brew 'yq'                # Like jq, but for YAML (great for Docker Compose files)
+
+# Terminal Enhancements
+brew 'zoxide'            # A smarter 'cd' command that learns your habits
+brew 'eza'               # A modern replacement for 'ls' with icons and git integration
+brew 'starship'          # A fast, highly customizable shell prompt
+brew 'tldr'              # Simplified man pages (try 'tldr docker')
+
+# Python/FastAPI specific
+brew 'uv'                # Extremely fast Python package installer (faster than pip/poetry)
 # Apps
 cask 'docker'
 cask 'github'

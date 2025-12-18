@@ -10,6 +10,7 @@ end
 config.enable_tab_bar = true
 config.font_size = 16.0
 config.color_scheme = "Tokyo Night"
+-- config.color_scheme = "catppuccin"
 config.window_background_opacity = window_background_opacity
 config.macos_window_background_blur = 10
 config.window_decorations = "RESIZE"

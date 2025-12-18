@@ -26,7 +26,7 @@ echo "Creating symlinks..."
 ln -sfn $HOME/.dotfiles/.zshrc $HOME/.zshrc
 # WezTerm
 mkdir -p $HOME/.config/wezterm
-ln -sfn $HOME/.dotfiles/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+ln -sfn $HOME/.dotfiles/wezterm/wezterm.lua $HOME/.wezterm.lua
 # Git Global Ignore
 ln -sfn $HOME/.dotfiles/.gitignore_global $HOME/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
